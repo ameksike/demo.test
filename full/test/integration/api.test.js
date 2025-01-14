@@ -1,6 +1,7 @@
 import request from 'supertest';
 import express from 'express';
 import apiRoutes from '../../src/routes/api.js';
+import { getUser } from '../utils/fake.js';
 
 const app = express();
 app.use(express.json());
@@ -27,6 +28,21 @@ describe('User API Integration Tests', () => {
         expect(response.body.user).toMatchObject(newUser);
         createdUserId = response.body.user.id;
         console.log(createdUserId);
+    });
+
+    test('POST /api/user - Create a new user with Fake Data', async () => {
+        const newUser = getUser();
+        const response = await request(app).post('/api/user').send(newUser);
+
+        expect(response.status).toBe(201);
+        expect(response.body.message).toBe('User created');
+        expect(response.body.user.firstName).toBe(newUser.firstName);
+        expect(response.body.user.lastName).toBe(newUser.lastName);
+        expect(response.body.user.email).toBe(newUser.email);
+        expect(response.body.user.sex).toBe(newUser.sex);
+        expect(response.body.user.avatar).toBe(newUser.avatar);
+        expect(new Date(response.body.user.birthday).toISOString()).toBe(newUser.birthday.toISOString());
+        expect(response.body.user.subscriptionTier).toBe(newUser.subscriptionTier);
     });
 
     test('GET /api/user - Retrieve all users', async () => {
