@@ -32,9 +32,19 @@ project/
 
 ## Running the Application
 - npm install
-- npm test
 - npm start
 - GET http://localhost:3000
+
+## Running Unit and Integration Test 
+- npm test
+
+## E2E with Playright
+- npm run test:e2e:pg:run
+- npm run test:e2e:pg:ui
+- npm run test:e2e:pg:report
+
+## E2E with Cypress
+- 
 
 ## API Endpoints
 
@@ -166,3 +176,7 @@ Response Example:
 }
 ```
 
+## Install 
+
+- Playwright
+  - npm init playwright@latest
