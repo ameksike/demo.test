@@ -10,6 +10,7 @@ router.post('/', (req, res) => {
     const { firstName, lastName, phone, email, avatar, birthday, sex, subscriptionTier, id = users.length + 1 } = req.body;
     const newUser = { id, firstName, lastName, phone, email, avatar, birthday, sex, subscriptionTier };
     users.push(newUser);
+    console.log(">>> Create a new user ", newUser);
     res.status(201).json({ message: 'User created', user: newUser });
 });
 
@@ -17,6 +18,7 @@ router.post('/', (req, res) => {
  * Read all users
  */
 router.get('/', (req, res) => {
+    console.log(">>> Read all users", users);
     res.status(200).json(users);
 });
 
@@ -25,6 +27,7 @@ router.get('/', (req, res) => {
  */
 router.get('/:id', (req, res) => {
     const user = users.find((u) => u.id === parseInt(req.params.id));
+    console.log(">>> Read a user by ID ", user);
     if (!user) return res.status(404).json({ message: 'User not found' });
     res.status(200).json(user);
 });
@@ -34,6 +37,7 @@ router.get('/:id', (req, res) => {
  */
 router.put('/:id', (req, res) => {
     const user = users.find((u) => u.id === parseInt(req.params.id));
+    console.log(">>> Update a user by ID ", user);
     if (!user) return res.status(404).json({ message: 'User not found' });
     const { firstName, lastName, phone, email, avatar, birthday, sex, subscriptionTier } = req.body;
     user.firstName = firstName || user.firstName;
@@ -52,6 +56,7 @@ router.put('/:id', (req, res) => {
  */
 router.delete('/:id', (req, res) => {
     const index = users.findIndex((u) => u.id === parseInt(req.params.id));
+    console.log(">>> Delete a user by ID ", index);
     if (index === -1) return res.status(404).json({ message: 'User not found' });
     users.splice(index, 1);
     res.status(200).json({ message: 'User deleted' });

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Management</title>
-    <link rel="stylesheet" href="public/style.css">
+    <link rel="stylesheet" href="public/style.css" type="text/css" />
 
 </head>
 
@@ -60,16 +60,19 @@
         document.getElementById('userForm').addEventListener('submit', async (e) => {
             e.preventDefault();
 
+
             const formData = {
-                firstName: document.getElementById('firstName').value,
-                lastName: document.getElementById('lastName').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                avatar: document.getElementById('avatar').value,
-                birthday: document.getElementById('birthday').value,
-                sex: document.getElementById('sex').value,
-                subscriptionTier: document.getElementById('subscriptionTier').value,
+                firstName: document.getElementById('firstName')?.value,
+                lastName: document.getElementById('lastName')?.value,
+                email: document.getElementById('email')?.value,
+                phone: document.getElementById('phone')?.value,
+                avatar: document.getElementById('avatar')?.value,
+                birthday: document.getElementById('birthday')?.value,
+                sex: document.getElementById('sex')?.value,
+                subscriptionTier: document.getElementById('subscriptionTier')?.value,
             };
+
+            console.log('>>> Form submitted', formData);
 
             const response = await fetch('/api/user', {
                 method: 'POST',
@@ -78,7 +81,7 @@
             });
 
             const data = await response.json();
-            alert(data.message);
+            window.location.href = '/user';
             e.target.reset();
         });
     </script>

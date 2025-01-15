@@ -7,7 +7,7 @@ import { faker } from '@faker-js/faker';
 
 /**
  * Get a random user
- * @returns {Object} - User
+ * @returns {{avatar:string; birthday:Date; email:string; firstName:string; lastName:string; sex:string; subscriptionTier:string}} - User
  */
 export function getUser() {
     return {

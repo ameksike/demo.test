@@ -1,29 +1,33 @@
 import { faker } from '@faker-js/faker/locale/en';
 import { expect, test } from '@playwright/test';
+import { getUser } from '../../utils/fake.js';
 
 test.describe('Testing the User Module', () => {
     test('should create an account with username and password', async ({
         page,
     }) => {
-        const username = faker.internet.username(); // before version 9.1.0, use userName()
-        const password = faker.internet.password();
-        const email = faker.internet.exampleEmail();
+        const user = getUser();
+        // Step 1: Navigate to the form page
+        await page.goto('http://localhost:3000/user/form');  // Replace with your actual URL
 
-        // Visit the webpage and create an account.
-        await page.goto('https://www.example.com/register');
-        await page.getByLabel('email').fill(email);
-        await page.getByLabel('username').fill(username);
-        await page.getByLabel('password', { exact: true }).fill(password);
-        await page.getByLabel('confirm password').fill(password);
-        await page.getByRole('button', { name: 'Register' }).click();
+        // Step 2: Fill in the form fields
+        await page.fill('input[name="firstName"]', user.firstName);
+        await page.fill('input[name="lastName"]', user.lastName);
+        await page.fill('input[name="email"]', user.email);
+        await page.fill('input[name="avatar"]', user.avatar);
+        await page.fill('input[name="birthday"]', user.birthday.toISOString().split('T')[0]);
+        await page.selectOption('select[name="sex"]', user.sex);
+        await page.selectOption('select[name="subscriptionTier"]', user.subscriptionTier);
 
-        // Now, we try to login with these credentials.
-        await page.goto('https://www.example.com/login');
-        await page.getByLabel('email').fill(email);
-        await page.getByLabel('password').fill(password);
-        await page.getByRole('button', { name: 'Login' }).click();
+        // Step 3: Submit the form
+        await page.click('button[type="submit"]');  // Submit button
 
-        // We should have logged in successfully to the dashboard page.
-        await expect(page).toHaveURL(/.*dashboard/);
+        // Step 4: Wait for the response (e.g., a confirmation message or a user list)
+        await expect(page).toHaveURL('http://localhost:3000/user');  // Replace with your actual redirect URL
+        // await expect(page.locator('text=User created')).toBeVisible();  // Check for a success message (adjust as needed)
+
+        // Optionally, verify that the user data appears in the list
+        const userName = await page.locator(`td:has-text("${user.firstName} ${user.lastName}")`);
+        await expect(userName).toBeVisible();  // Ensure the new user appears in the user list
     });
 });
