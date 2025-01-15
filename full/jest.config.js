@@ -4,4 +4,5 @@ export default {
         "**/spec/**/*.spec.[jt]s?(x)"  // Matches all spec files in "spec" directory
     ],
     testPathIgnorePatterns: ["/node_modules/", "/dist/", "/e2e/"],
+    testEnvironment: 'node',
 };
