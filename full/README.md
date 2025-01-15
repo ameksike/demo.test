@@ -66,17 +66,25 @@ playwright.config.js       # Playwright configuration file (End To End test)
 - GET http://localhost:3000
 
 ## E2E with Playright
-- [Config File](./playwright.config.js)
-- [Reports](./playwright-report/index.html)
-- Run test in CLI mode: `npm run test:e2e:pg:run` 
-- Run test in Browser mode:`npm run test:e2e:pg:ui`
-- Run and generate Reports: `npm run test:e2e:pg:report`
+- Install 
+  - `npm init playwright@latest`
+- Files
+  - [Config File](./playwright.config.js)
+  - [Reports](./playwright-report/index.html)
+- Run 
+  - Run test in CLI mode: `npm run test:e2e:pg:run` 
+  - Run test in Browser mode:`npm run test:e2e:pg:ui`
+  - Run and generate Reports: `npm run test:e2e:pg:report`
 
 ## E2E with Cypress
-- [Config File](./cypress.config.js)
-- [Reports](./report/cypress/index.html)
-- Run test in CLI mode: `npm run test:e2e:cy:run` 
-- Run test in Browser mode:`npm run test:e2e:cy:ui`
+- Install 
+  - `npm install cypress --save-dev`
+- Files
+  - [Config File](./cypress.config.js)
+  - [Reports](./report/cypress/index.html)
+- Run 
+  - Run test in CLI mode: `npm run test:e2e:cy:run` 
+  - Run test in Browser mode:`npm run test:e2e:cy:ui`
 
 ## Unit and Integration Test 
 - `npm test`
