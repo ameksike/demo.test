@@ -39,11 +39,13 @@ project/
 - npm test
 
 ## E2E with Playright
+- [Get Started](https://playwright.dev/docs/test-configuration)
 - npm run test:e2e:pg:run
 - npm run test:e2e:pg:ui
 - npm run test:e2e:pg:report
 
 ## E2E with Cypress
+- [Get Started](https://docs.cypress.io/app/get-started/install-cypress)
 - 
 
 ## API Endpoints
