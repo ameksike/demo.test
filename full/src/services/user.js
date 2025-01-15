@@ -3,25 +3,15 @@ import users from '../models/users.js';
 
 /**
  * User type definition in JsDoc format
- * @typedef  {Object} TUser
- * @property {String|Number} [id]
- * @property {String} email
- * @property {String} firstName  
- * @property {String} [lastName]  
- * @property {String} [phone]  
- * @property {String} [avatar]  
- * @property {String} [birthday]  
- * @property {String} [sex]  
- * @property {Number} [age]  
- * @property {String} [subscriptionTier]
+ * @typedef  {import('../models/users.js').TUser} TUser
  */
 
 /**
  * Create a new user
  * @param {TUser} user 
- * @returns {TUser} user
+ * @returns {import('../models/users.js').TUser} user
  */
-export function createUser(user) {
+export function create(user) {
     if (!user.firstName || !user.email) {
         throw new Error("Name and email are required.");
     }
@@ -35,7 +25,7 @@ export function createUser(user) {
  * @param {String|Number} userId 
  * @returns {TUser|null} user
  */
-export function getUserById(userId) {
+export function getById(userId) {
     return users.find(user => user.id === parseInt(userId)) || null;
 }
 
@@ -43,7 +33,7 @@ export function getUserById(userId) {
  * Get all users
  * @returns {TUser[]} users
  */
-export function getAllUsers() {
+export function getAll() {
     return users;
 }
 
@@ -53,7 +43,7 @@ export function getAllUsers() {
  * @param {TUser} updatedData 
  * @returns {TUser|null} user
  */
-export function updateUser(userId, updatedData) {
+export function update(userId, updatedData) {
     // Find user index by ID
     const index = users.findIndex(user => user.id === parseInt(userId));
     if (index === -1) {
@@ -74,7 +64,7 @@ export function updateUser(userId, updatedData) {
  * @param {Number|String} userId 
  * @returns {TUser|null} user
  */
-export function deleteUser(userId) {
+export function remove(userId) {
     const index = users.findIndex(user => user.id === parseInt(userId));
     if (index === -1) {
         return null;
@@ -87,9 +77,9 @@ export function deleteUser(userId) {
  * Export service CRUD operations as Object
  */
 export default {
-    create: createUser,
-    getById: getUserById,
-    getAll: getAllUsers,
-    update: updateUser,
-    remove: deleteUser
+    create,
+    getById,
+    getAll,
+    update,
+    remove
 }
