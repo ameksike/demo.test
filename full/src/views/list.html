@@ -5,16 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Management</title>
-    <link rel="stylesheet" href="public/style.css" type="text/css" />
+    <link rel="stylesheet" href="/public/user-list.css" type="text/css" />
 </head>
 
 <body>
 
-    <section>
-        <a href="/user/form">Create User</a>
-    </section>
-
-    <section>
+    <section class="user-list-container">
         <h1>User Management</h1>
 
         <table border="1">
@@ -27,6 +23,10 @@
             </thead>
             <tbody id="userList"></tbody>
         </table>
+    </section>
+
+    <section class="user-form">
+        <a href="/user/form">Create User</a>
     </section>
 
     <script>

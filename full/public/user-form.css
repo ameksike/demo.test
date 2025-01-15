@@ -1,0 +1,150 @@
+/* General Body */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #6a11cb, #2574fc8e); /* Vibrant gradient background */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.btn {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 71px;
+    margin: 25px 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+
+/* Form Container */
+.form-container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px;
+    margin: 25px 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hover effect for form container */
+.form-container:hover {
+    transform: scale(1.02); /* Slight zoom effect */
+}
+
+/* Form Title */
+.form-container h2 {
+    text-align: center;
+    color: #333;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Form Labels */
+label {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 8px;
+    display: block;
+    font-weight: 500;
+    margin-top: 15px; /* Add some space above each label */
+}
+
+/* Form Inputs and Select */
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="url"],
+select,
+button {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+/* Focus effect for inputs */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus,
+input[type="url"]:focus,
+select:focus {
+    border-color: #6a11cb; /* Purple color on focus */
+    outline: none;
+    box-shadow: 0 0 10px rgba(106, 17, 203, 0.5); /* Soft glow effect */
+}
+
+/* Button Style */
+button {
+    background-color: #2575fc; /* Blue color for button */
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 14px;
+    border-radius: 8px;
+    border: none;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+/* Button Hover and Active States */
+button:hover {
+    background-color: #6a11cb; /* Change color to purple on hover */
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+button:active {
+    background-color: #2575fc; /* Revert to blue when clicked */
+    transform: scale(0.98); /* Slight shrinking effect */
+}
+
+/* Success Message */
+.success-message {
+    background-color: #28a745; /* Green color for success */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Input Placeholder Style */
+input::placeholder,
+select::placeholder {
+    color: #bbb;
+    font-style: italic;
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 600px) {
+    .form-container {
+        width: 90%;
+        padding: 25px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="date"],
+    select,
+    button {
+        font-size: 14px;
+    }
+}
