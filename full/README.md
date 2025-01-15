@@ -53,9 +53,11 @@ test/
  │   ├── fake.js           # Utilities to get fake data
  ├── reports/              # Reports directory
  │   └── cypress/
- │       ├── screenshots/
- │       ├── videos/
- │       └── mochawesome.html
+ │   │   ├── screenshots/
+ │   │   ├── videos/
+ │   │   └── mochawesome.html
+ │   └── playwright/
+ │       └── index.html
 jest.config.js             # Jest configuration file (Unit & Integration test)
 playwright.config.js       # Playwright configuration file (End To End test)
 ```
@@ -70,21 +72,23 @@ playwright.config.js       # Playwright configuration file (End To End test)
   - `npm init playwright@latest`
 - Files
   - [Config File](./playwright.config.js)
-  - [Reports](./playwright-report/index.html)
+  - [Reports](./reports/playwright/index.html)
 - Run 
   - Run test in CLI mode: `npm run test:e2e:pg:run` 
   - Run test in Browser mode:`npm run test:e2e:pg:ui`
   - Run and generate Reports: `npm run test:e2e:pg:report`
+  ![playright](./docs/playright.jpg)
 
 ## E2E with Cypress
 - Install 
   - `npm install cypress --save-dev`
 - Files
   - [Config File](./cypress.config.js)
-  - [Reports](./report/cypress/index.html)
+  - [Reports](./reports/cypress/index.html)
 - Run 
   - Run test in CLI mode: `npm run test:e2e:cy:run` 
   - Run test in Browser mode:`npm run test:e2e:cy:ui`
+  ![playright](./docs/cypress.jpg)
 
 ## Unit and Integration Test 
 - `npm test`
