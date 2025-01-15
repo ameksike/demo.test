@@ -38,7 +38,7 @@ test/
 ## Test Project Structure
 ```
 src/
- ├── ...
+ ├── ...                   # Application Project Structure 
 test/
  ├── e2e/                  # All End-To-End test cases 
  │   ├── cypress/          # All test based on Cypress
@@ -56,19 +56,21 @@ playwright.config.js       # Playwright configuration file (End To End test)
 ```
 
 ## Running the Application
-- npm install
-- npm start
+- `npm install`
+- `npm start`
 - GET http://localhost:3000
 
 ## E2E with Playright
-- npm run test:e2e:pg:run
-- npm run test:e2e:pg:ui
-- npm run test:e2e:pg:report
+- [Config File](./playwright.config.js)
+- [Reports](./playwright-report/index.html)
+- Run test in CLI mode: `npm run test:e2e:pg:run` 
+- Run test in Browser mode:`npm run test:e2e:pg:ui`
+- Run and generate Reports: `npm run test:e2e:pg:report`
 
 ## E2E with Cypress
 
 ## Unit and Integration Test 
-- npm test
+- `npm test`
 - Debugging from VSCode IDE
  ![jest.debug](./docs/jest.debug.png)
 
