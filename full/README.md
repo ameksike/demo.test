@@ -11,14 +11,20 @@ The purpose of this project is to:
   
 ## Project Structure
 ```
-project/
-├── routes/
-│   ├── frontend.js       # Rutas para las páginas HTML (formulario y listado)
-│   ├── api.js            # Rutas para el CRUD de usuarios (API)
-├── views/
-│   ├── form.html         # Página para el registro de usuarios
-│   ├── list.html         # Página para el listado de usuarios
-├── server.js             # Archivo principal
+src/
+ ├── routes/
+ │   ├── frontend.js       # Routes for HTML pages (form and list)
+ │   ├── api.js            # Routes for user CRUD (API)
+ ├── views/
+ │   ├── form.html         # User registration page
+ │   ├── list.html         # User listing page
+ ├── models/
+ │   ├── user.js           # In-memory user data structure, or shared user list 
+ ├── services/
+ │   ├── user.js           # Functional user service with the CRUD implementation
+ ├── server.js             # Main file
+test/       
+ ├── ...                   # Test Project Structure 
 ```
 
 ### Description of Files:
@@ -29,154 +35,71 @@ project/
 - **`jest.config.cjs`**: Jest configuration file for ESM compatibility.
 - **`server.js`**: Main entry point that sets up the Express server.
 
+## Test Project Structure
+```
+src/
+ ├── ...                   # Application Project Structure 
+test/
+ ├── e2e/                  # All End-To-End test cases 
+ │   ├── cypress/          # All test based on Cypress
+ │   │   ├── from.spec.js          
+ │   ├── playwright/       # All test based on Playwright
+ │   │   ├── from.spec.js      
+ ├── integration/
+ │   ├── api.test.js       # API User CRUD integration test 
+ ├── unit/
+ │   ├── user.srv.test.js  # User service Unit test
+ ├── utils/
+ │   ├── fake.js           # Utilities to get fake data
+ ├── reports/              # Reports directory
+ │   └── cypress/
+ │   │   ├── screenshots/
+ │   │   ├── videos/
+ │   │   └── mochawesome.html
+ │   └── playwright/
+ │       └── index.html
+jest.config.js             # Jest configuration file (Unit & Integration test)
+playwright.config.js       # Playwright configuration file (End To End test)
+```
 
 ## Running the Application
-- npm install
-- npm start
+- `npm install`
+- `npm start`
 - GET http://localhost:3000
 
-## Running Unit and Integration Test 
-- npm test
-
 ## E2E with Playright
-- npm run test:e2e:pg:run
-- npm run test:e2e:pg:ui
-- npm run test:e2e:pg:report
+- Install 
+  - `npm init playwright@latest`
+- Files
+  - [Config File](./playwright.config.js)
+  - [Reports](./reports/playwright/index.html)
+- Run 
+  - Run test in CLI mode: `npm run test:e2e:pg:run` 
+  - Run test in Browser mode:`npm run test:e2e:pg:ui`
+  - Run and generate Reports: `npm run test:e2e:pg:report`
+  ![playright](./docs/playright.jpg)
 
 ## E2E with Cypress
-- 
+- Install 
+  - `npm install cypress --save-dev`
+- Files
+  - [Config File](./cypress.config.js)
+  - [Reports](./reports/cypress/index.html)
+- Run 
+  - Run test in CLI mode: `npm run test:e2e:cy:run` 
+  - Run test in Browser mode:`npm run test:e2e:cy:ui`
+  ![playright](./docs/cypress.jpg)
 
-## API Endpoints
+## Unit and Integration Test 
+- `npm test`
+- Debugging from VSCode IDE
+ ![jest.debug](./docs/jest.debug.png)
 
-### 1. **POST /api/user** - Create a User
-Creates a new user with the provided information.
-
-```
-POST /api/user
-```
-
-**Request Example:**
-```json
-{
-  "name": "John Doe",
-  "email": "john.doe@example.com",
-  "avatar": "https://example.com/avatar.jpg",
-  "birthday": "1990-01-01",
-  "sex": "male",
-  "subscriptionTier": "basic"
-}
-```
-**Response Example:**
-```json
-{
-  "message": "User created",
-  "user": {
-    "id": 1,
-    "name": "John Doe",
-    "email": "john.doe@example.com",
-    "avatar": "https://example.com/avatar.jpg",
-    "birthday": "1990-01-01",
-    "sex": "male",
-    "subscriptionTier": "basic"
-  }
-}
-```
-
-### 2. GET /api/user - Retrieve All Users
-Fetches all users from the database.
-```
-GET /api/user
-```
-
-**Response Example:**
-```json
-[
-  {
-    "id": 1,
-    "name": "John Doe",
-    "email": "john.doe@example.com",
-    "avatar": "https://example.com/avatar.jpg",
-    "birthday": "1990-01-01",
-    "sex": "male",
-    "subscriptionTier": "basic"
-  },
-  {
-    "id": 2,
-    "name": "Jane Smith",
-    "email": "jane.smith@example.com",
-    "avatar": "https://example.com/avatar2.jpg",
-    "birthday": "1985-05-15",
-    "sex": "female",
-    "subscriptionTier": "free"
-  }
-]
-```
-
-### 3. GET /api/user/:id - Retrieve User by ID
-Fetches a specific user by ID.
-
-```
-GET /api/user/1
-```
-
-Request Example:
-
-```json
-{
-  "id": 1,
-  "name": "John Doe",
-  "email": "john.doe@example.com",
-  "avatar": "https://example.com/avatar.jpg",
-  "birthday": "1990-01-01",
-  "sex": "male",
-  "subscriptionTier": "basic"
-}
-```
-
-### 4. PUT /api/user/:id - Update User Details
-Updates the user details by ID.
-
-Request Example:
-
-```json
-{
-  "name": "John Updated",
-  "subscriptionTier": "business"
-}
-```
-
-Response Example:
-```json
-{
-  "message": "User updated",
-  "user": {
-    "id": 1,
-    "name": "John Updated",
-    "email": "john.doe@example.com",
-    "avatar": "https://example.com/avatar.jpg",
-    "birthday": "1990-01-01",
-    "sex": "male",
-    "subscriptionTier": "business"
-  }
-}
-```
-
-### 5. DELETE /api/user/:id - Delete a User
-Deletes a specific user by ID.
-
-```
-DELETE /api/user/1
-```
-
-Response Example:
-
-```json
-{
-  "message": "User deleted"
-}
-```
-
-## Install 
-
-- Playwright
-  - npm init playwright@latest
+## References
+- [API Endpoint Descriptions](./docs/API.md)
+- [Faker.js Guide](https://fakerjs.dev/guide/frameworks.html)
+- [Playwright Get Started](https://playwright.dev/docs/test-configuration)
+- [Cypress Get Started](https://docs.cypress.io/app/get-started/install-cypress)
+- [Jest Mocks](https://jestjs.io/docs/en/manual-mocks)
+- [Mockaroo lets you generate up to 1,000 rows of realistic test data in CSV, JSON, SQL, and Excel formats.](https://www.mockaroo.com/)
+- [Cucumber lets you write automated tests in plain language](https://cucumber.io/docs/cucumber/)

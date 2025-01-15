@@ -7,7 +7,7 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Jest single run all tests",
+            "name": "Run Jest for all tests",
             "program": "${workspaceRoot}/node_modules/jest-cli/bin/jest.js",
             "args": [
                 "-i",
@@ -15,54 +15,36 @@
                 "-i",
                 "--no-cache"
             ],
-            "console": "integratedTerminal",
-            "internalConsoleOptions": "neverOpen"
-        },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Jest watch all tests",
-            "program": "${workspaceRoot}/node_modules/jest-cli/bin/jest.js",
-            "args": [
-                "--experimental-vm-modules",
-                "--verbose",
-                "-i",
-                "--no-cache",
-                "--watchAll"
+            "runtimeArgs": [
+                "--experimental-vm-modules"
             ],
             "console": "integratedTerminal",
-            "internalConsoleOptions": "neverOpen"
+            "internalConsoleOptions": "neverOpen",
+            "env": {
+                "NODE_OPTIONS": "--experimental-vm-modules"
+            }
         },
         {
             "type": "node",
             "request": "launch",
-            "name": "Jest watch current file",
-            "program": "${workspaceFolder}/node_modules/jest-cli/bin/jest",
+            "name": "Run Jest Current File",
+            "program": "${workspaceFolder}/node_modules/jest/bin/jest.js",
             "args": [
-                "${fileBasename}",
-                "--verbose",
-                "-i",
-                "--no-cache",
-                "--watchAll"
-            ],
-            "console": "integratedTerminal",
-            "internalConsoleOptions": "neverOpen"
-        },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Jest debug current file",
-            "program": "${workspaceRoot}/node_modules/jest/bin/jest.js",
-            "args": [
-                "--experimental-vm-modules",
                 "--verbose",
                 "-i",
                 "--no-cache",
                 "--testPathPattern",
                 "${fileBasename}"
             ],
+            "runtimeArgs": [
+                "--experimental-vm-modules"
+            ],
+            "cwd": "${workspaceFolder}",
             "console": "integratedTerminal",
-            "internalConsoleOptions": "neverOpen"
+            "internalConsoleOptions": "neverOpen",
+            "env": {
+                "NODE_OPTIONS": "--experimental-vm-modules"
+            }
         }
     ]
 }
