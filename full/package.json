@@ -8,7 +8,9 @@
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "test:e2e:pg:run": "npx playwright test",
     "test:e2e:pg:ui": "npx playwright test --ui",
-    "test:e2e:pg:report": "npx playwright show-report"
+    "test:e2e:pg:report": "npx playwright show-report",
+    "test:e2e:cy:run": "npx cypress run",
+    "test:e2e:cy:ui": "npx cypress open"
   },
   "keywords": [],
   "author": "",

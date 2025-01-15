@@ -51,6 +51,11 @@ test/
  │   ├── user.srv.test.js  # User service Unit test
  ├── utils/
  │   ├── fake.js           # Utilities to get fake data
+ ├── reports/              # Reports directory
+ │   └── cypress/
+ │       ├── screenshots/
+ │       ├── videos/
+ │       └── mochawesome.html
 jest.config.js             # Jest configuration file (Unit & Integration test)
 playwright.config.js       # Playwright configuration file (End To End test)
 ```
@@ -68,6 +73,10 @@ playwright.config.js       # Playwright configuration file (End To End test)
 - Run and generate Reports: `npm run test:e2e:pg:report`
 
 ## E2E with Cypress
+- [Config File](./cypress.config.js)
+- [Reports](./report/cypress/index.html)
+- Run test in CLI mode: `npm run test:e2e:cy:run` 
+- Run test in Browser mode:`npm run test:e2e:cy:ui`
 
 ## Unit and Integration Test 
 - `npm test`
@@ -80,3 +89,5 @@ playwright.config.js       # Playwright configuration file (End To End test)
 - [Playwright Get Started](https://playwright.dev/docs/test-configuration)
 - [Cypress Get Started](https://docs.cypress.io/app/get-started/install-cypress)
 - [Jest Mocks](https://jestjs.io/docs/en/manual-mocks)
+- [Mockaroo lets you generate up to 1,000 rows of realistic test data in CSV, JSON, SQL, and Excel formats.](https://www.mockaroo.com/)
+- [Cucumber lets you write automated tests in plain language](https://cucumber.io/docs/cucumber/)

@@ -1,4 +1,3 @@
-import { faker } from '@faker-js/faker/locale/en';
 import { expect, test } from '@playwright/test';
 import { getUser } from '../../utils/fake.js';
 
