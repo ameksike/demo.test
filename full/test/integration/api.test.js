@@ -71,6 +71,7 @@ describe('User API Integration Tests', () => {
         expect(response.status).toBe(200);
         expect(response.body.user.firstName).toBe(updatedData.firstName);
         expect(response.body.user.subscriptionTier).toBe(updatedData.subscriptionTier);
+        expect(response.body.user.sex).toBe('male');
     });
 
     test('DELETE /api/user/:id - Delete a user', async () => {
