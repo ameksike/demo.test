@@ -7,6 +7,35 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "Run Playwright UI",
+            "runtimeExecutable": "npx",
+            "console": "integratedTerminal",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "runtimeArgs": [
+                "playwright",
+                "test",
+                "--ui"
+            ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Run Playwright CLI",
+            "runtimeExecutable": "npx",
+            "console": "integratedTerminal",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "runtimeArgs": [
+                "playwright",
+                "test"
+            ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "Run Jest for all tests",
             "program": "${workspaceRoot}/node_modules/jest-cli/bin/jest.js",
             "args": [
