@@ -1,12 +1,11 @@
-# User API with ESM and Jest Tests
-
+# Full JavaScript Test Demo Project (Unit, Integration and E2E testing)
 This project demonstrates a simple User API implemented with Express.js and tested using Jest and Supertest. The API allows creating, retrieving, updating, and deleting user records, with additional user data such as avatar, birthday, sex, and subscription tier. 
 
 ## Purpose
 
 The purpose of this project is to:
 - Showcase a simple API with full CRUD functionality.
-- Use ESM (ECMAScript Modules) in a Node.js project.
+- Use EMS (ECMAScript Modules) in a Node.js project.
 - Provide integration tests for the API using Jest and Supertest.
   
 ## Project Structure

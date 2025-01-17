@@ -2,8 +2,7 @@
 
 This repository contains a list of demonstration applications. The demo applications have as a common factor the use of technologies based on Jest, Mock, Playwright, Cypress, Faker.js, etc. Note that most of the published source code is for academic purposes.
 
-- [Full JavaScript demo app: Unit, Integration and E2E](./full/README.md) 
-
+- [Full JavaScript Test Demo Project (Unit, Integration and E2E testing)](./full/README.md) 
 
 ### Similar repositories 
 + [JavaScript: Demo applications written in JavaScript ](https://github.com/ameksike/demo.javascript)
