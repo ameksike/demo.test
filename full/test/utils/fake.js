@@ -6,8 +6,12 @@ import { faker } from '@faker-js/faker';
  */
 
 /**
+ * @typedef  {import('../../src/models/users').TUser} TUser
+ */
+
+/**
  * Get a random user
- * @returns {{avatar:string; birthday:Date; email:string; firstName:string; lastName:string; sex:string; subscriptionTier:string}} - User
+ * @returns {TUser} - User
  */
 export function getUser() {
     return {
