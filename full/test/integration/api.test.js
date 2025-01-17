@@ -1,11 +1,8 @@
-import request from 'supertest';
-import express from 'express';
-import apiRoutes from '../../src/routes/api.js';
 import { getUser } from '../utils/fake.js';
+import { getLocalClient } from '../utils/fetch.js';
 
-const app = express();
-app.use(express.json());
-app.use('/api/user', apiRoutes);
+// define the request object client
+const request = getLocalClient();
 
 describe('User API Integration Tests', () => {
     let createdUserId;
@@ -21,7 +18,7 @@ describe('User API Integration Tests', () => {
             subscriptionTier: 'basic',
         };
 
-        const response = await request(app).post('/api/user').send(newUser);
+        const response = await request.post('/api/user').send(newUser);
 
         expect(response.status).toBe(201);
         expect(response.body.message).toBe('User created');
@@ -32,7 +29,7 @@ describe('User API Integration Tests', () => {
 
     test('POST /api/user - Create a new user with Fake Data', async () => {
         const newUser = getUser();
-        const response = await request(app).post('/api/user').send(newUser);
+        const response = await request.post('/api/user').send(newUser);
 
         expect(response.status).toBe(201);
         expect(response.body.message).toBe('User created');
@@ -46,7 +43,7 @@ describe('User API Integration Tests', () => {
     });
 
     test('GET /api/user - Retrieve all users', async () => {
-        const response = await request(app).get('/api/user');
+        const response = await request.get('/api/user');
 
         expect(response.status).toBe(200);
         expect(response.body).toBeInstanceOf(Array);
@@ -54,7 +51,7 @@ describe('User API Integration Tests', () => {
     });
 
     test('GET /api/user/:id - Retrieve user by ID', async () => {
-        const response = await request(app).get(`/api/user/${createdUserId}`);
+        const response = await request.get(`/api/user/${createdUserId}`);
 
         expect(response.status).toBe(200);
         expect(response.body.id).toBe(createdUserId);
@@ -66,7 +63,7 @@ describe('User API Integration Tests', () => {
             subscriptionTier: 'business',
         };
 
-        const response = await request(app).put(`/api/user/${createdUserId}`).send(updatedData);
+        const response = await request.put(`/api/user/${createdUserId}`).send(updatedData);
 
         expect(response.status).toBe(200);
         expect(response.body.user.firstName).toBe(updatedData.firstName);
@@ -75,14 +72,14 @@ describe('User API Integration Tests', () => {
     });
 
     test('DELETE /api/user/:id - Delete a user', async () => {
-        const response = await request(app).delete(`/api/user/${createdUserId}`);
+        const response = await request.delete(`/api/user/${createdUserId}`);
 
         expect(response.status).toBe(200);
         expect(response.body.message).toBe('User deleted');
     });
 
     test('GET /api/user/:id - Retrieve non-existent user', async () => {
-        const response = await request(app).get(`/api/user/${createdUserId}`);
+        const response = await request.get(`/api/user/${createdUserId}`);
 
         expect(response.status).toBe(404);
         expect(response.body.message).toBe('User not found');
