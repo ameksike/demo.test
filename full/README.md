@@ -96,6 +96,7 @@ playwright.config.js       # Playwright configuration file (End To End test)
  ![jest.debug](./docs/jest.debug.png)
 
 ## References
+- [JsDoc: Documentation and Type Definition in JavaScript](https://jsdoc.app/)
 - [API Endpoint Descriptions](./docs/API.md)
 - [Faker.js Guide](https://fakerjs.dev/guide/frameworks.html)
 - [Playwright Get Started](https://playwright.dev/docs/test-configuration)

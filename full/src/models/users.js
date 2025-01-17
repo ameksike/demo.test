@@ -1,6 +1,8 @@
 const users = [];
 
 /**
+ * @link https://jsdoc.app/tags-typedef
+ * 
  * User type definition in JsDoc format
  * @typedef  {Object} TUser
  * @property {String|Number} [id]
