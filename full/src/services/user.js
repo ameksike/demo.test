@@ -7,6 +7,17 @@ import users from '../models/users.js';
  */
 
 /**
+ * Get the next ID for a new user
+ * @returns {Number} id
+ */
+export function getId() {
+    const lastUser = users[users.length - 1];
+    const lastUserId = lastUser && lastUser.id ? lastUser.id + 1 : 0;
+    const nextId = users.length + 1;
+    return nextId > lastUserId ? nextId : lastUserId;
+}
+
+/**
  * Create a new user
  * @param {TUser} user 
  * @returns {import('../models/users.js').TUser} user
@@ -15,7 +26,7 @@ export function create(user) {
     if (!user.firstName || !user.email) {
         throw new Error("Name and email are required.");
     }
-    const newUser = { id: users.length + 1, ...user };
+    const newUser = { id: getId(), ...user };
     users.push(newUser);
     return newUser;
 }
