@@ -3,6 +3,8 @@ import { expect } from '@playwright/test';
 /**
  * @typedef {import('@playwright/test').Page} Page
  * @typedef  {import('../../../../src/models/users').TUser} TUser
+ * 
+ * @link https://playwright.dev/docs/pom
  */
 
 export class UserHomePage {
