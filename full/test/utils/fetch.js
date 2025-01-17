@@ -5,21 +5,22 @@ import apiRoutes from '../../src/routes/api.js';
 
 /**
  * Get a local client
+ * @link https://www.npmjs.com/package/supertest
  * @returns {Function} - Supertest client
  */
 export function getLocalClient() {
     // Use the following code to test a local API
-    const app = express();
+    let app = express();
     app.use(express.json());
     app.use('/api/user', apiRoutes);
     return request(app);
 }
 
 /**
- * Get a remote client: Use the following code to test a remote API
+ * Get a remote client: Use the following code to test a remote API, it could be Axios, Fetch API, or any other client
+ * @link https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
  */
 export function getRemoteClient() {
-    // it could be Axios, Fetch, or any other client
     return {
         /**
          * POST method

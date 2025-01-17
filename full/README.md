@@ -97,6 +97,8 @@ playwright.config.js       # Playwright configuration file (End To End test)
 
 ## References
 - [JsDoc: Documentation and Type Definition in JavaScript](https://jsdoc.app/)
+- [Using the Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
+- [Using Supertest for data fetching](https://github.com/ladjs/supertest#readme)
 - [API Endpoint Descriptions](./docs/API.md)
 - [Faker.js Guide](https://fakerjs.dev/guide/frameworks.html)
 - [Playwright Get Started](https://playwright.dev/docs/test-configuration)
